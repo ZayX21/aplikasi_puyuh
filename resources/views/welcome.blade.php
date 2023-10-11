@@ -88,7 +88,7 @@
                             <h4 class="text-light text-uppercase font-weight-medium mb-3">
                                 {{ $slider->deskripsi }}
                             </h4>
-                            <h3 class="display-4 text-white font-weight-semi-bold mb-4">{{ $slider->judul }}</h3>
+                            <h3 class="display-4 text-white font-weight-semi-bold mb-4 text-capitalize">{{ $slider->judul }}</h3>
                             {{-- <a href="" class="btn btn-light py-2 px-3">Shop Now</a> --}}
                         </div>
                     </div>
