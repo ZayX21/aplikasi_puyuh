@@ -6,7 +6,7 @@
                     src="{{ Storage::url('public/produk/') . $produk->fotoProduk()->first()->foto }}" alt="">
             </div>
             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                <h6 class="text-truncate mb-3">{{ $produk->nama_produk }}</h6>
+                <h6 class="text-truncate mb-3 produk">{{ $produk->nama_produk }}</h6>
                 <div class="d-flex justify-content-center">
                     <h6>Rp. {{ number_format($produk->harga) }}</h6>
 

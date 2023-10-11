@@ -33,7 +33,7 @@
 <body>
     <!-- Topbar Start -->
     <div class="container-fluid">
-        <div class="row bg-secondary py-2 px-xl-5">
+        {{-- <div class="row bg-secondary py-2 px-xl-5">
             <div class="col-lg-6 d-none d-lg-block">
             </div>
             <div class="col-lg-6 text-center text-lg-right">
@@ -49,11 +49,11 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="#" class="text-decoration-none">
-                    <img src="{{ Storage::url('public/') . $setting->logo }}" width="80%">
+                    <img src="{{ Storage::url('public/') . $setting->logo }}" width="50%">
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
@@ -93,7 +93,7 @@
                     id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         @foreach ($kategoris as $kategori)
-                            <a href="{{ route('produk', ['kategori' => $kategori->id]) }}" class="nav-item nav-link">{{ $kategori->nama }} </a>
+                            <a href="{{ route('produk', ['kategori' => $kategori->id]) }}" class="nav-item nav-link list-kategori">{{ $kategori->nama }} </a>
                         @endforeach
                     </div>
                 </nav>
@@ -114,34 +114,19 @@
     @yield('content')
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
-        <div class="row px-xl-5 pt-5">
-            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                <a href="" class="text-decoration-none">
-                    <img src="{{ Storage::url('public/') . $setting->logo }}" width="80%">
-                </a>
-                <p>
+    <div class="container-fluid bg-secondary text-dark mt-5 pt-3 pb-3">
+        <div class="row mx-xl-5">
+            <div class="col-md-12 px-xl-0">
+                <p class="text-center text-md-center" style="text-transform: capitalize">
                     {{ $setting->description }}
                 </p>
-                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>{{ $setting->address }}</p>
-                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>{{ $setting->email }}</p>
-                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>{{ $setting->phone }}</p>
-            </div>
-            <div class="col-lg-8 col-md-12">
-                <div class="row">
-                    
-                </div>
-            </div>
-        </div>
-        <div class="row border-top border-light mx-xl-5 py-4">
-            <div class="col-md-6 px-xl-0">
-                <p class="mb-md-0 text-center text-md-left text-dark">
+                <p class="mb-2 text-center text-md-center"><i class="fa fa-map-marker-alt text-primary mr-3"></i>{{ $setting->address }}</p>
+                <p class="mb-2 text-center text-md-center"><i class="fa fa-envelope text-primary mr-3"></i>{{ $setting->email }}</p>
+                <p class="mb-2 text-center text-md-center"><i class="fa fa-phone-alt text-primary mr-3"></i>{{ $setting->phone }}</p>
+                <p class="mb-md-0 pt-3 text-center text-md-center text-dark">
                     &copy; <a class="text-dark font-weight-semi-bold" href="#">{{ $setting->name }}</a>. All Rights
                     Reserved.
                 </p>
-            </div>
-            <div class="col-md-6 px-xl-0 text-center text-md-right">
-                {{-- <img class="img-fluid" src="img/payments.png" alt=""> --}}
             </div>
         </div>
     </div>
