@@ -23,7 +23,7 @@
                     <a href="{{ route('register') }}" class="nav-item nav-link">Register</a>
                 @endif
             @else
-                <a href="#" class="nav-item nav-link">Halo, {{ Auth::user()->name }}</a>
+                <a href="{{ route('login') }}" class="nav-item nav-link">Halo, <span class="nama-user">{{ Auth::user()->name }}</span></a>
                 <a href="{{ route('login') }}" class="nav-item nav-link">Dashboard</a>
 
                 <a class="nav-item nav-link" href="{{ route('logout') }}"

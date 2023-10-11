@@ -9996,3 +9996,8 @@ a.text-dark:focus {
 .list-kategori {
     text-transform: capitalize;
 }
+
+.nama-user{
+  text-transform: capitalize;
+  font-weight: bold;
+}
