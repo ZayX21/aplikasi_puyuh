@@ -1,11 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-    <a href="" class="text-decoration-none d-block d-lg-none">
-        <img src="{{ Storage::url('public/') . $setting->logo }}" width="80%">
-    </a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+    <div class="d-flex">
+        <a href="" class="text-decoration-none d-block d-lg-none">
+            <img src="{{ Storage::url('public/') . $setting->logo }}" width="25%">
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse justify-content-between text-right mr-2" id="navbarCollapse">
         <div class="navbar-nav mr-auto py-0">
             <a href="{{ url('/') }}" class="nav-item nav-link">Home</a>
             <a href="{{ route('produk') }}" class="nav-item nav-link">Produk</a>
