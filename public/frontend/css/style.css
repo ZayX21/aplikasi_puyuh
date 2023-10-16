@@ -4273,7 +4273,7 @@ input[type="button"].btn-block {
 .navbar {
     position: relative;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     align-items: center;
     /* justify-content: space-between; */
     padding: 0.5rem 1rem;
@@ -4392,7 +4392,7 @@ input[type="button"].btn-block {
     .navbar-expand-sm > .container-md,
     .navbar-expand-sm > .container-lg,
     .navbar-expand-sm > .container-xl {
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
     }
     .navbar-expand-sm .navbar-collapse {
         display: flex !important;
@@ -9997,7 +9997,7 @@ a.text-dark:focus {
     text-transform: capitalize;
 }
 
-.nama-user{
-  text-transform: capitalize;
-  font-weight: bold;
+.nama-user {
+    text-transform: capitalize;
+    font-weight: bold;
 }

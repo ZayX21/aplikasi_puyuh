@@ -31,57 +31,128 @@
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid">
-        {{-- <div class="row bg-secondary py-2 px-xl-5">
-            <div class="col-lg-6 d-none d-lg-block">
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    @php
-                        $jsonSosmed = json_decode($setting->social_media, true);
-                    @endphp
-                    <a class="text-dark px-2" href="{{ $jsonSosmed['facebook'] }}">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="text-dark px-2" href="{{ $jsonSosmed['facebook'] }}">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
-        </div> --}}
-        <div class="row align-items-center py-3 px-xl-5">
-            <div class="col-lg-3 d-none d-lg-block">
-                <a href="#" class="text-decoration-none">
-                    <img src="{{ Storage::url('public/') . $setting->logo }}" width="50%">
-                </a>
-            </div>
-            <div class="col-lg-6 col-6 text-left">
-                <form action="">
-                    {{-- <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Cari Produk">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
+    {{-- <nav class="navbar navbar-expand-lg bg-light navbar-light sticky-top mb-2 shadow-sm">
+        <a href="{{ url('/') }}" class="navbar-brand">
+            <img src="{{ Storage::url('public/') . $setting->logo }}" width="10%">
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="{{ url('/') }}" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('produk') }}" class="nav-link">Produk</a>
+                </li>
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link">Login</a>
+                        </li>
+                    @endif
+
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a href="{{ route('register') }}" class="nav-link">Register</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                            Halo, <span class="nama-user">{{ Auth::user()->name }}</span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ route('login') }}">Dashboard</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
                         </div>
-                    </div> --}}
-                </form>
-            </div>
-            <div class="col-lg-3 col-6 text-right">
-                <a href="{{ route('keranjang') }}" class="btn border">
-                    <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge jumlah-keranjang">{{ $countCart }}</span>
-                </a>
-            </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex justify-content-center align-item-center"
+                            href="{{ route('keranjang') }}">
+                            <i class="fas fa-shopping-cart text-primary"></i>
+                            <span class="badge jumlah-keranjang">{{ $countCart }}</span>
+                        </a>
+                    </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                @endguest
+            </ul>
         </div>
-    </div>
+    </nav> --}}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top mb-2 shadow-sm">
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <img src="{{ Storage::url('public/') . $setting->logo }}" width="10%">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="{{ url('/') }}" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('produk') }}" class="nav-link">Produk</a>
+                </li>
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link">Login</a>
+                        </li>
+                    @endif
+
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a href="{{ route('register') }}" class="nav-link">Register</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                            Halo, <span class="nama-user">{{ Auth::user()->name }}</span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ route('login') }}">Dashboard</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex justify-content-center align-item-center"
+                            href="{{ route('keranjang') }}">
+                            <i class="fas fa-shopping-cart text-primary"></i>
+                            <span class="badge jumlah-keranjang">{{ $countCart }}</span>
+                        </a>
+                    </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                @endguest
+            </ul>
+        </div>
+    </nav>
     <!-- Topbar End -->
 
 
     <!-- Navbar Start -->
     <div class="container-fluid mb-5">
-        <div class="row border-top px-xl-5">
+        @if (request()->url() == url('/'))
+            @yield('slider')
+        @endif
+        {{-- <div class="row px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
                     data-toggle="collapse" href="#navbar-vertical"
@@ -93,7 +164,8 @@
                     id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         @foreach ($kategoris as $kategori)
-                            <a href="{{ route('produk', ['kategori' => $kategori->id]) }}" class="nav-item nav-link list-kategori">{{ $kategori->nama }} </a>
+                            <a href="{{ route('produk', ['kategori' => $kategori->id]) }}"
+                                class="nav-item nav-link list-kategori">{{ $kategori->nama }} </a>
                         @endforeach
                     </div>
                 </nav>
@@ -107,7 +179,7 @@
                 @endif
 
             </div>
-        </div>
+        </div> --}}
     </div>
 
     <!-- Navbar End -->
@@ -120,11 +192,15 @@
                 <p class="text-center text-md-center" style="text-transform: capitalize">
                     {{ $setting->description }}
                 </p>
-                <p class="mb-2 text-center text-md-center"><i class="fa fa-map-marker-alt text-primary mr-3"></i>{{ $setting->address }}</p>
-                <p class="mb-2 text-center text-md-center"><i class="fa fa-envelope text-primary mr-3"></i>{{ $setting->email }}</p>
-                <p class="mb-2 text-center text-md-center"><i class="fa fa-phone-alt text-primary mr-3"></i>{{ $setting->phone }}</p>
+                <p class="mb-2 text-center text-md-center"><i
+                        class="fa fa-map-marker-alt text-primary mr-3"></i>{{ $setting->address }}</p>
+                <p class="mb-2 text-center text-md-center"><i
+                        class="fa fa-envelope text-primary mr-3"></i>{{ $setting->email }}</p>
+                <p class="mb-2 text-center text-md-center"><i
+                        class="fa fa-phone-alt text-primary mr-3"></i>{{ $setting->phone }}</p>
                 <p class="mb-md-0 pt-3 text-center text-md-center text-dark">
-                    &copy; <a class="text-dark font-weight-semi-bold" href="#">{{ $setting->name }}</a>. All Rights
+                    &copy; <a class="text-dark font-weight-semi-bold" href="#">{{ $setting->name }}</a>. All
+                    Rights
                     Reserved.
                 </p>
             </div>
@@ -148,7 +224,7 @@
     @yield('jsCustom')
     <script>
         $(document).ready(function() {
-            
+
         });
     </script>
     <!-- Template Javascript -->
