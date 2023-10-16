@@ -31,62 +31,6 @@
 </head>
 
 <body>
-    {{-- <nav class="navbar navbar-expand-lg bg-light navbar-light sticky-top mb-2 shadow-sm">
-        <a href="{{ url('/') }}" class="navbar-brand">
-            <img src="{{ Storage::url('public/') . $setting->logo }}" width="10%">
-        </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('produk') }}" class="nav-link">Produk</a>
-                </li>
-                @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a href="{{ route('login') }}" class="nav-link">Login</a>
-                        </li>
-                    @endif
-
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a href="{{ route('register') }}" class="nav-link">Register</a>
-                        </li>
-                    @endif
-                @else
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                            aria-expanded="false">
-                            Halo, <span class="nama-user">{{ Auth::user()->name }}</span>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ route('login') }}">Dashboard</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link d-flex justify-content-center align-item-center"
-                            href="{{ route('keranjang') }}">
-                            <i class="fas fa-shopping-cart text-primary"></i>
-                            <span class="badge jumlah-keranjang">{{ $countCart }}</span>
-                        </a>
-                    </li>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                @endguest
-            </ul>
-        </div>
-    </nav> --}}
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top mb-2 shadow-sm">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ Storage::url('public/') . $setting->logo }}" width="10%">
