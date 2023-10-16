@@ -41,5 +41,11 @@
                 </a>
             @endguest
         </div>
+        <div class="col-lg-1 col-3 text-right">
+            <a href="{{ route('keranjang') }}" class="btn border">
+                <i class="fas fa-shopping-cart text-primary"></i>
+                <span class="badge jumlah-keranjang">{{ $countCart }}</span>
+            </a>
+        </div>
     </div>
 </nav>

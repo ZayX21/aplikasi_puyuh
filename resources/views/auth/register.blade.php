@@ -10,7 +10,7 @@
                     <div class="app-brand justify-content-center">
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-2">New Account 🚀</h4>
+                    <h4 class="mb-2">Buat akun baru anda</h4>
                     <p class="mb-4">Lengkapi form di bawah dengan
                         menggunakan data Anda yang valid</p>
 
