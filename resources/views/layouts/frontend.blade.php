@@ -53,7 +53,7 @@
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="#" class="text-decoration-none">
-                    <img src="{{ Storage::url('public/') . $setting->logo }}" width="50%">
+                    <img src="{{ Storage::url('public/') . $setting->logo }}" width="30%">
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
@@ -68,45 +68,43 @@
                     </div> --}}
                 </form>
             </div>
-            <div class="col-lg-3 col-6 text-right">
-                <a href="{{ route('keranjang') }}" class="btn border">
-                    <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge jumlah-keranjang">{{ $countCart }}</span>
-                </a>
-            </div>
         </div>
     </div>
     <!-- Topbar End -->
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid mb-5">
-        <div class="row border-top px-xl-5">
-            <div class="col-lg-3 d-none d-lg-block">
-                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
-                    data-toggle="collapse" href="#navbar-vertical"
-                    style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                    <h6 class="m-0">Kategori</h6>
-                    <i class="fa fa-angle-down text-dark"></i>
-                </a>
-                <nav class="collapse @if (request()->url() == url('/')) show @endif navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
-                    id="navbar-vertical">
-                    <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                        @foreach ($kategoris as $kategori)
-                            <a href="{{ route('produk', ['kategori' => $kategori->id]) }}" class="nav-item nav-link list-kategori">{{ $kategori->nama }} </a>
-                        @endforeach
-                    </div>
-                </nav>
-            </div>
-            <div class="col-lg-9">
+  <div class="container-fluid mb-5">
+    <div class="row border-top px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block position-relative">
+            <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
+                data-toggle="collapse" href="#navbar-vertical"
+                style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                <h6 class="m-0">Kategori</h6>
+                <i class="fa fa-angle-down text-dark"></i>
+            </a>
+            <nav class="collapse @if (request()->url() == url('/')) show @endif navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 position-absolute"
+                id="navbar-vertical" style="width: 100%; top: 65px;">
+                <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+                    @foreach ($kategoris as $kategori)
+                        <a href="{{ route('produk', ['kategori' => $kategori->id]) }}" class="nav-item nav-link list-kategori">{{ $kategori->nama }} </a>
+                    @endforeach
+                </div>
+            </nav>
+        </div>
+        <div class="col-lg-9">
+            @include('components.frontend-menu')
+            
+            @if (request()->url() == url('/'))
+                @yield('slider')
+            @endif
+        </div>
+    </div>
+</div>
 
-                @include('components.frontend-menu')
+    </div>
+</div>
 
-                @if (request()->url() == url('/'))
-                    @yield('slider')
-                @endif
-
-            </div>
         </div>
     </div>
 

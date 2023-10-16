@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+<nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 sticky-top">
     <div class="d-flex">
         <a href="" class="text-decoration-none d-block d-lg-none">
             <img src="{{ Storage::url('public/') . $setting->logo }}" width="25%">
@@ -36,6 +36,12 @@
                     @csrf
                 </form>
             @endguest
+        </div>
+        <div class="col-lg-1 col-3 text-right">
+            <a href="{{ route('keranjang') }}" class="btn border">
+                <i class="fas fa-shopping-cart text-primary"></i>
+                <span class="badge jumlah-keranjang">{{ $countCart }}</span>
+            </a>
         </div>
     </div>
 </nav>
