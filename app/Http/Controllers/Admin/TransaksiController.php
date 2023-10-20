@@ -82,6 +82,8 @@ class TransaksiController extends Controller
                         $bgPesanan = "warning";
                     } elseif ($row->status == "Sudah Dikirim") {
                         $bgPesanan = "success";
+                    } elseif ($row->status == "Pesanan Diterima") {
+                        $bgPesanan = "info";
                     } else {
                         $bgPesanan = "danger";
                     }

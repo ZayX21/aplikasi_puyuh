@@ -75,7 +75,7 @@
                     }
                 });
             });
-
+            
             $('#data-table').on('click', '#kirimProduk, #batalKirim', function() {
                 var id = $(this).data('id');
                 var status = $(this).data('status');

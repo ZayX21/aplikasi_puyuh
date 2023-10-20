@@ -24,10 +24,16 @@ class TransaksiController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    // Update Button
-                    $detailBtn = "<button class='btn btn-sm btn-info detailData' id='detailData' data-id='" . $row->id . "'><i class='bx bx-show'></i></button>";
+                    $detailButton = '
+                    <button class="btn btn-sm btn-primary detailData" data-id="' . $row->id . '" id="detailData"><i class="bx bx-show"></i>Test</button>
+                    ';
 
-                    return $detailBtn;
+                    if ($row->status == "Sudah Dikirim") {
+                        $detailButton .= '<button class="btn btn-sm btn-secondary detailData" data-id="' . $row->id . '" id="konfirmasiPesanan" data-status="Pesanan Diterima" >Konfirmasi Penerimaan Barang</button>';
+                    }
+
+                    return $detailButton;
+                    // return $detailBtn;
                 })
                 ->addColumn('total', function ($row) {
                     return 'Rp. ' . number_format($row->total_harga);
@@ -37,6 +43,8 @@ class TransaksiController extends Controller
                         $bgPesanan = "warning";
                     } elseif ($row->status == "Sudah Dikirim") {
                         $bgPesanan = "success";
+                    } elseif ($row->status == "Pesanan Diterima") {
+                        $bgPesanan = "info";
                     } else {
                         $bgPesanan = "danger";
                     }
@@ -86,5 +94,12 @@ class TransaksiController extends Controller
             })
             ->rawColumns(['produk', 'totalHarga', 'hargaProduk'])
             ->make(true);
+    }
+
+    public function konfirmasiPenerimaanBarang(Request $request, Pesanan $pesan)
+    {
+        $pesan->status = $request->status;
+        $pesan->save();
+        return response()->json(['success' => true]);
     }
 }

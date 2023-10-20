@@ -82,6 +82,7 @@ Route::group(['middleware' => ['auth', 'checkrole:Pelanggan']], function () {
     Route::get('/pelanggan/pesan', [App\Http\Controllers\Pelanggan\TransaksiController::class, 'pesan'])->name('pelanggan.pesan');
     Route::get('/pelanggan/pesan/{pesan}', [App\Http\Controllers\Pelanggan\TransaksiController::class, 'pesanDetail'])->name('pelanggan.pesanDetail');
     Route::get('/pelanggan/pesan/produk/{pesan}', [App\Http\Controllers\Pelanggan\TransaksiController::class, 'pesanDetailProduk'])->name('pelanggan.pesanDetailProduk');
+    Route::get('/pelanggan/konfirmasi_pesanan/{pesan}', [App\Http\Controllers\Pelanggan\TransaksiController::class, 'konfirmasiPenerimaanBarang'])->name('pelanggan.konfirmasiPenerimaanBarang');
 
     Route::get('/pelanggan/profile', [App\Http\Controllers\Pelanggan\DashboardController::class, 'profile'])->name('pelanggan.profile');
     Route::put('/pelanggan/profile', [App\Http\Controllers\Pelanggan\DashboardController::class, 'profileAct'])->name('pelanggan.profileAct');

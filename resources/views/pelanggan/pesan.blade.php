@@ -28,6 +28,45 @@
                 });
             });
 
+            $('#data-table').on('click', '#konfirmasiPesanan', function() {
+                var id = $(this).data('id');
+                var status = $(this).data('status');
+                var url = "{{ route('pelanggan.konfirmasiPenerimaanBarang', ':id') }}";
+                url = url.replace(':id', id);
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        status: status
+                    },
+                    success: function(response) {
+                        if (response.success == true) {
+                            Swal.fire({
+                                title: 'Apakah Barang Sudah Anda Terima?',
+                                text: "Barang yang sudah diterima tidak bisa dikembalikan!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Ya, Barang Sudah Diterima'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    Swal.fire(
+                                        'Terima Kasih Atas Konfirmasi Anda',
+                                        'Silahkan Memesan Lagi',
+                                        'success'
+                                    ),
+                                    $('#data-table').DataTable().ajax.reload();
+                                }
+                            })
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+
             tableData();
 
             function tableData() {
